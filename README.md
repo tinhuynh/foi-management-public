@@ -1,4 +1,4 @@
-**This README provides an overview, screenshots, design documentation, and source code folder structure. Please contact me if you are interested in full technical solution and source code. Thank you.**
+**This README provides an overview, screenshots, and design documentation. Please contact me if you are interested in full technical solution and source code. Thank you.**
 
 ## **FOI Management Suite**
 *A Freedom of Information (FOI) request handling solution featuring Model-Driven and Canvas Apps, plus a Self-Service Power Pages portal.*

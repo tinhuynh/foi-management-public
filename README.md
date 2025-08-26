@@ -97,7 +97,7 @@ The solution follows a layered architecture:
 - `c4-architecture-foi.png` – System Architecture Diagram (C4 Container)
 - `dfd-foi-canvas-upload-delete.png` – Data Flow Diagram: Canvas Upload and Delete
 - `dfd-foi-md-crud-assign-team.png` – Data Flow Diagram: FOI Request's Team Assignment
-- `erd-foi-management-suite.png` – Entity Relationship Diagram
+- `erd-foi-management-suite-public.png` – Entity Relationship Diagram
 
 ---
 
@@ -162,6 +162,7 @@ The solution follows a layered architecture:
 - Developed Model-Driven, Canvas, and Power Pages apps with responsive UI and advanced customisation.
 - Built and configured PCF control, C# plugins, and client-side JavaScript.
 - Set up governance measures including DLP, environment variables, and Solution Checker.
-- Power Platform Pipelines deployments across DEV and TEST environments.
+- Built error logging with handling and diagnostics for critical flows. 
+- Deployed solutions across DEV and TEST environments using Power Platform Pipelines.
 - Created and documented automated workflows, security models, and integration points.
 - Produced solution diagrams and technical documentation for maintainability.

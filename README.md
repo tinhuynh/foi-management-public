@@ -32,7 +32,7 @@ It integrates internal case management tools with a secure citizen-facing portal
    - Public-facing site for submitting FOI requests online and tracking status.
    - Request Details page using Liquid templates and FetchXML to display related data (e.g., assigned officer).
    - Page permissions for secure content access.
-   - Role-based access and table permissions for secure citizen interactions.
+   - Web roles and table permissions for secure citizen interactions.
    - Sign Up, Sign In, and OOB Profile management features enabled.
    - Request Submission form implemented as OOB Basic Form.
 

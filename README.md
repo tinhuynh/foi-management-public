@@ -117,8 +117,7 @@ The solution follows a layered architecture:
 ![Model-Driven App Case Form](./assets/screenshots/3-d365-case-form.png)
 *Business Process Flow at active stage, PCF SLA Progress Bar, OOB SLA Timer, and key FOI fields populated.*
 
-**Canvas App – Search & Upload**
-| Search Screen | Upload Screen |
+**Canvas App – Search & Upload | Search Screen | Upload Screen |**
 ![Canvas App Search](./assets/screenshots/4-canvas-search-and-upload.png)
 *Responsive layout with request search results and upload interface showing immediate success feedback.*
 
@@ -139,7 +138,7 @@ The solution follows a layered architecture:
 ![Relationship of FOI Request, User and Department](./assets/screenshots/8-request-user-department-dataverse-schema.png)
 *FOI Request uses Owner (User) as the Assigned Officer. Each User links to a Department, so department access is inherited via the officer rather than a direct Request→Department link.*
 
-**FOI_Flow_Overview.png & FOI_Flow_RunHistory.png**
+**FOI Flow Overview & FOI Flow Run History**
 ![Upload document to SharePoint Library Flow and Successful Run History](./assets/screenshots/9-power-automate-flow-overview-and-run-history.png)
 *Retrieves SharePoint Site URL from an Environment Variable (queried by Schema Name for ALM portability), implements Try–Catch–Finally for error handling, and returns a success/failure status back to the Canvas app. Screenshot shows the environment variable step and a successful run history.*
 

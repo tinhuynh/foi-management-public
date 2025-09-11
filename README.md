@@ -40,7 +40,7 @@ It integrates internal case management tools with a secure citizen-facing portal
 
 ### **Key Features**
 - **Automation:** Power Automate flows for FOI request assignment, folder creation, and document routing from Dataverse to SharePoint.
-- **Security:** Role-based security, field-level security, hierarchy security (position model), DLP policies, and page permissions in Power Pages.
+- **Security:** Role-based security, field-level security, hierarchy security (position model), Data Loss Prevention (DLP) policies, and page permissions in Power Pages.
 - **Integration:** SharePoint Online for document management.
 - **Governance:** Environment variables for configuration, DLP enforcement, use of Solution Checker, and deployment across DEV and Test environments via Power Platform Pipelines.
 - **Error Handling:** Error handling and logging logic built into relevant flows (Record ID, Source Flow, Error Message, Timestamp).

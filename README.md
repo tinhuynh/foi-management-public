@@ -3,7 +3,7 @@
 ## **FOI Management Suite**
 *A Freedom of Information (FOI) request handling solution featuring Model-Driven and Canvas Apps, plus a Self-Service Power Pages portal.*
 
-### **Overview**
+## **Overview**
 The FOI Management Suite is an end-to-end solution built on Microsoft Power Platform and Dynamics 365 Customer Service, designed to streamline Freedom of Information (FOI) request processing for government or public sector organisations.
 It integrates internal case management tools with a secure citizen-facing portal, enabling efficient request intake, document handling, SLA monitoring, and compliance tracking.
 
@@ -11,16 +11,27 @@ It integrates internal case management tools with a secure citizen-facing portal
 
 ---
 
-### **Key Components**
+## **Key Features**
+
+- **FOI Request Management:** End-to-end intake, triage, processing, status tracking, escalation, and closure of FOI requests.
+- **Document Handling:** Upload, view, download, and manage FOI attachments securely stored in SharePoint.
+- **Automated Workflows:** Automatic assignment, reminders, escalations, and requester notifications built into business processes.
+- **User & Role Permissions:** Role-based access ensuring FOI officers, managers, and requesters only see relevant, authorised data.
+- **Citizen Self-Service:** Power Pages portal allowing citizens to submit new FOI requests and track their status online.
+- **Dashboards & Insights:** Real-time analytics for case volume, status distribution, processing times, and team performance.
+
+---
+
+## **Key Components**
 
 1. **FOI Management – Model-Driven App**
-   - Built on the **D365 Customer Service Case entity** for end-to-end request tracking.
+   - Built on a custom Dataverse FOI Request table, with selective use of D365 Case entity features (queues, routing rules, escalation patterns) to align with Customer Service operational workflows.
    - Business Process Flow to guide FOI officers through request lifecycle.
    - SLA Alerts & out-of-the-box (OOB) SLA Timer control for compliance monitoring.
    - Custom PCF SLA Progress Bar for enhanced SLA visualisation.
    - Client-side JavaScript to enforce uppercase Department codes and warn if not exactly three characters.
    - C# Plugin for automated case number generation and server-side logic.
-   - Utilises Dataverse FOI Escalation BPF’s View, Chart, and Dashboard for Power BI integration.
+   - Utilises Dataverse FOI Escalation BPF views and charts, which are surfaced in the FOI Power BI dashboard.
 
 2. **FOI Search & Upload – Canvas App**
    - Responsive layout supporting mobile and desktop devices.
@@ -36,74 +47,255 @@ It integrates internal case management tools with a secure citizen-facing portal
    - Sign Up, Sign In, and OOB Profile management features enabled.
    - Request Submission form implemented as OOB Basic Form.
 
----
-
-### **Key Features**
-- **Automation:** Power Automate flows for FOI request assignment, folder creation, and document routing from Dataverse to SharePoint.
-- **Security:** Role-based security, field-level security, hierarchy security (position model), Data Loss Prevention (DLP) policies, and page permissions in Power Pages.
-- **Integration:** SharePoint Online for document management.
-- **Governance:** Environment variables for configuration, DLP enforcement, use of Solution Checker, and deployment across DEV and Test environments via Power Platform Pipelines.
-- **Error Handling:** Error handling and logging logic built into relevant flows (Record ID, Source Flow, Error Message, Timestamp).
-- **Notifications:** Stakeholder and requester notifications built into relevant flows.
-- **Reporting:**
-  - **FOI Case Analytics** – Overview of FOI activity including total cases, active vs. resolved counts, case distribution by status code, average resolution time, and requester breakdown.
-  - **FOI Escalation Process** – Visualises case volumes at each Business Process Flow stage (Investigation, Resolution, Ready for Closure) alongside status reasons (Active, Finished, Aborted).
+For deeper technical patterns (ETL, async integrations, routing, observability, DevOps, and testing), see the **Enterprise Features** section below.
 
 ---
 
-### **Automation Overview**
-- FOI request assignment and SLA monitoring workflows.
-- Document upload to Dataverse, then routed to SharePoint with metadata updates.
-- Automated folder creation linked to FOI Request Numbers.
+## **Automation Overview**
+Automation covers three layers:
 
-Full list of flows, triggers, connectors, and purposes is documented in
+1. **Front-line automation**
+   - Assignment
+   - Notifications
+   - SLA monitoring
+
+2. **Document automation**
+   - Upload pipeline
+   - Folder creation
+   - Metadata updates
+
+3. **Background orchestration**
+   - Email ingestion
+   - Asynchronous validation
+   - Audit logging
+   - Integration workflows
+   - Migration Run Tracking
+
+All automation design notes are covered in the **Enterprise Features** section.  
+   
+A full catalogue of flows, triggers, and connectors is available in
 [`/docs/automation-details.md`](./docs/automation-details.md).
-For a visual representation to some of the flows, see the Data Flow Diagrams (DFD) in the `/docs` folder.
+For a visual representation to some of the flows, see the Data Flow Diagrams (DFD) in the `/docs/diagrams` folder.
 
 ---
 
-### **Technical Highlights**
+## **Technical Highlights**
 - **D365 Customer Service Case entity** customisation.
 - **Business Process Flows** for structured case progression, including FOI Escalation BPF.
 - **Custom PCF SLA Progress Bar control** for SLA visualisation.
 - **Client-side JavaScript** for validation and formatting.
 - **C# Plugin** for server-side automation.
 - **Business Rules** for validation and automation.
+- **Field-Level Security** applied to protect sensitive requester attributes.
 - **Custom Action in Power Automate** to resolve cases from within the flow.
 - **FetchXML** in both Power Automate and Power Pages Liquid templates.
 - **Responsive Canvas App** design for mobile and desktop.
 - **Liquid templates** for customised portal experiences.
 - **Power BI**: Built with Power BI Desktop, including integration with Dataverse BPF views, charts, and dashboards.
+- Additional enterprise-grade capabilities (DevOps automation, integration architecture, custom auditing, observability, queue routing) are detailed in the **Enterprise Features - High-Level Summary** section.
 
 ---
 
-### **Tech Stack**
-- **Microsoft Power Platform:** Model-Driven App, Canvas App, Power Pages, Power Automate
-- **Microsoft Dataverse** – Core data platform
-- **Dynamics 365 Customer Service** – Case management foundation
-- **SharePoint Online** – Document storage and metadata
-- **Power BI Desktop & Service** – Reporting and dashboards
-- **PCF, C#, JavaScript, FetchXML, Liquid** – Customisation & development
+## **Tech Stack**
+- **Microsoft Power Platform** - Model-Driven App, Canvas App, Power Pages, Power Automate
+- **Microsoft Dataverse** - Core data platform
+- **Dynamics 365 Customer Service** - Case management foundation
+- **SharePoint Online** - Document storage and metadata
+- **Power BI Desktop & Service** - Reporting and dashboards
+- **PCF, C#, JavaScript, FetchXML, Liquid** - Customisation & development
+- **Azure Services** - Azure Function, Logic Apps, Service Bus
+- **Data Integration** - Power Query / Dataflows
+- **Testing** - xUnit, FakeXrmEasy
 
 ---
 
-### **Architecture & Diagrams**
-The solution follows a layered architecture:
-- **Presentation Layer:** Model-Driven App, Canvas App, Power Pages
-- **Business Logic Layer:** Power Automate workflows, business rules, C# plugins, PCF control
-- **Data Layer:** Dataverse tables for requests, documents, SLA tracking, and logs
-
-*Refer to attached diagrams in `/docs` for:*
-- `c4-architecture-foi.png` – System Architecture Diagram (C4 Container)
-- `dfd-foi-canvas-upload-delete.png` – Data Flow Diagram: Canvas Upload and Delete
-- `dfd-foi-md-crud-assign-team.png` – Data Flow Diagram: FOI Request's Team Assignment
-- `erd-foi-management-suite-public.png` – Entity Relationship Diagram
+## **Developer Tooling**
+- **LevelUp** – Dataverse metadata inspection, form diagnostics, and record navigation.
+- **XrmToolBox: Plugin Trace Viewer** – Advanced plug-in execution diagnostics and trace log inspection.
+- **XrmToolBox: Data Transporter** – Reference data migration between environments.
 
 ---
 
-### **Screenshots**
+## Platform Governance & Security Controls
 
-#### **Solution Overview**
+This section outlines the governance, security, and operational standards applied across environments to ensure compliance, stability, and controlled access in enterprise scenarios.
+
+### Security Model
+- Custom security roles for FOI Admin, Team Leader, Officer, and Auditor
+- Hierarchy security using the Position model
+- Dataverse table permissions for restricting record access
+- Power Pages web roles for authenticated external access
+
+### Governance & Environment Standards
+- Data Loss Prevention (DLP) policies enforcing connector boundaries
+- Environment Variables for consistent configuration across DEV/TEST
+- Solution Checker used to validate components against best practices
+- Power Platform Pipelines for controlled and traceable solution deployment
+
+### Reliability & Error Handling
+- Standardised error logging pattern capturing operation, record ID, flow source, and error details
+- Automated folder creation and structured document handling using Dataverse to SharePoint flows
+- Structured logging across Power Automate flows for traceability
+
+### Reporting & Operational Insights
+- FOI Case Analytics dashboard (status distribution, volume, time-to-resolution)
+- FOI Escalation Process reporting using BPF Stage views and charts
+- SLA tracking via PCF SLA Progress Bar and OOB SLA Timer
+
+---
+
+## How to Navigate This Repository
+
+
+- `/docs/automation-details.md` - Full list of flows, connectors, triggers
+- `/docs/enterprise-features/` - In-depth breakdowns of enterprise capabilities
+- `/docs/diagrams/` - Architecture diagrams, DFDs, ERDs
+- `/assets/screenshots/` - Screenshots referenced in this README
+
+---
+
+## Enterprise Features
+
+### A. High-Level Summary
+
+This solution implements **seven enterprise-grade capabilities**, each designed to reflect real-world government and large-organisation requirements. These features demonstrate production-aligned design, robust integration patterns, and operational maturity beyond typical junior implementations.
+
+---
+
+### **1. ALM & DevOps Discipline**
+
+**Purpose:** Ensure consistent, automated, repeatable deployments across environments.
+
+Automated export, build, and deployment of managed solutions  
+across **DEV → TEST** using Azure DevOps pipelines, connection references,  
+environment variables, and version-controlled solution artefacts.
+
+---
+
+### **2. ETL & Data Migration Pipeline**
+
+**Purpose:** Validate large CSV intake and safely promote FOI Requests into Dataverse.
+
+Dataflow-based staging model with validation, import status tracking,  
+run summaries, and batch promotion into FOI Requests. Supports substantial  
+CSV loads, controlled retries, failure isolation, and detailed migration logs.
+
+---
+
+### **3. Governance, Compliance & Auditing**
+
+**Purpose:** Provide transparent, auditable tracking of FOI Request changes.
+
+Custom FOI Request Audit table capturing field-level changes with old/new values,  
+user attribution, and timestamps. Supports compliance scenarios and extends  
+beyond native Dataverse auditing to meet government accountability requirements.
+
+---
+
+### **4. Integration Architecture**
+
+**Purpose:** Enable reliable, loosely coupled, asynchronous cross-system communication.
+
+End-to-end asynchronous integration chain:  
+**Webhook → Azure Function → Service Bus → Logic App consumer**.  
+Includes correlation IDs, structured validation outcomes, and clear technical  
+error surfaces for reliable multi-system orchestration.
+
+---
+
+### **5. Operational Automation (D365 Queues & Routing)**
+
+**Purpose:** Automate work distribution and case prioritisation aligned with real-world operations.
+
+Queue- and rule-based case assignment with priority tiers, default fallbacks,  
+“Worked By” behaviour, and supervisor visibility. Mirrors government intake  
+operations and reduces manual triage workload.
+
+---
+
+### **6. Observability & Reliability**
+
+**Purpose:** Provide centralised traceability across all automation, integration, and processing steps.
+
+Centralised Integration Log capturing operation name, source system, correlation ID,  
+timing, success/failure state, and detailed technical output. Enables support  
+teams to diagnose issues quickly across ingestion, validation, and promotion flows.
+
+---
+
+### **7. Testing & Verification**
+
+**Purpose:** Ensure reliability of server-side logic and business rules through automated validation.
+
+Plugin logic unit-tested using **FakeXrmEasy + xUnit** with scenario-based test coverage.  
+Demonstrates ability to mock Dataverse context, validate business rules, and build  
+repeatable automated tests aligned with enterprise engineering expectations.
+
+---
+
+### B. Capability Index
+
+| Capability                        | What it Demonstrates                                                                 |
+| --------------------------------- | ------------------------------------------------------------------------------------ |
+| [**ALM & DevOps Discipline**](./docs/enterprise-features/alm-devops.md)       | Managed solution promotion across DEV/TEST using Azure DevOps             |
+| [**ETL & Data Migration Pipeline**](./docs/enterprise-features/etl-data-migration.md) | Dataflows with staging, validation, and logged upsert-based migration                |
+| [**Governance & Compliance**](./docs/enterprise-features/governance-compliance-auditing.md)       | Custom audit tables, SLA enforcement, and escalation tracking                        |
+| [**Integration Readiness**](./docs/enterprise-features/integrations.md)         | Asynchronous integration using Logic Apps, Webhooks, Azure Function, and Service Bus                 |
+| [**Operational Automation**](./docs/enterprise-features/d365-queue-routing.md)        | Case assignment automation using D365 queues and routing rules                       |
+| [**Operational Reliability & Supportability**](./docs/enterprise-features/operational-reliability-supportability.md)  | Centralised reliability and error logging across all automation processes |
+| [**Testing & Verification**](./docs/enterprise-features/structured-and-unit-tests.md)        | Unit-tested plugin logic and scenario-based testing across key workflows             |
+
+All detailed breakdowns are available in [`/docs/enterprise`](./docs/enterprise-features).
+
+---
+
+## Architecture & Diagrams
+
+This section provides a structured overview of the system’s architecture, core data flows, and underlying data models.  
+Enterprise-specific diagrams are located in `/docs/diagrams/enterprise/`.
+
+### **A. High-Level Architecture**
+
+- **System Architecture (C4 Container Model)**  
+  [c4-architecture-foi.png](./docs/diagrams/c4-architecture-foi.png)
+
+- **Email Ingestion Integration Flow**  
+  [email-ingestion-logic-apps-integration-flow.png](./docs/diagrams/enterprise/email-ingestion-logic-apps-integration-flow.png)
+
+- **Jurisdiction Validation – Asynchronous Pipeline**  
+  [jurisdiction-validation-servicebus-event-flow.png](./docs/diagrams/enterprise/jurisdiction-validation-servicebus-event-flow.png)
+
+---
+
+### **B. Detailed Process Flows**
+
+- **Canvas App File Upload & Delete Flow**  
+  [dfd-foi-canvas-upload-delete.png](./docs/diagrams/dfd-foi-canvas-upload-delete.png)
+
+- **Model-Driven CRUD & Team Assignment Flow**  
+  [dfd-foi-md-crud-assign-team.png](./docs/diagrams/dfd-foi-md-crud-assign-team.png)
+
+- **ETL Staging → Import → FOI Promotion Flow**  
+  [etl-staging-to-foi-request-flow.png](./docs/diagrams/enterprise/etl-staging-to-foi-request-flow.png)
+
+---
+
+### **C. Data Models (ERDs)**
+
+- **Core FOI Management Suite ERD**  
+  [erd-foi-management-suite.png](./docs/diagrams/erd-foi-management-suite.png)
+
+- **Data Migration & Import ERD**  
+  [erd-foi-data-migration-import-staging.png](./docs/diagrams/enterprise/erd-foi-data-migration-import-staging.png)
+
+- **Audit & Integration Observability ERD**  
+  [erd-audit-integration-observability-erd.png](./docs/diagrams/enterprise/erd-audit-integration-observability-erd.png)
+
+---
+
+## **Screenshots**
+
+### **Solution Overview**
 
 **Submit New FOI Request (Business flow)**
 ![New FOI Request form](./assets/screenshots/1-md-app-foi-request-form.png)
@@ -113,9 +305,9 @@ The solution follows a layered architecture:
 ![New FOI Request form](./assets/screenshots/2-md-app-foi-request-review-detail-form.png)
 *Track request status, linked reviews and documents.*
 
-**Model-Driven App – FOI Case Form**
+**Model-Driven App – Escalation Case (linked to FOI Request)**
 ![Model-Driven App Case Form](./assets/screenshots/3-d365-case-form.png)
-*Business Process Flow at active stage, PCF SLA Progress Bar, OOB SLA Timer, and key FOI fields populated.*
+*Displays escalation-related Case record generated from FOI Request, showing BPF stage, PCF SLA Progress Bar, and SLA Timer.*
 
 **Canvas App – Search & Upload | Search Screen | Upload Screen |**
 ![Canvas App Search](./assets/screenshots/4-canvas-search-and-upload.png)
@@ -132,7 +324,7 @@ The solution follows a layered architecture:
 **Power BI – FOI Case Analytics Dashboard**
 ![Power BI Case Analytics](./assets/screenshots/7-pbi-case-analytics.png)
 
-#### **Technical Appendix**
+### **Technical Appendix**
 
 **Dataverse Schema**
 ![Relationship of FOI Request, User and Department](./assets/screenshots/8-request-user-department-dataverse-schema.png)
@@ -156,12 +348,33 @@ The solution follows a layered architecture:
 
 ---
 
-### **My Role & Contribution**
-- Designed the architecture and implemented all solution components.
-- Developed Model-Driven, Canvas, and Power Pages apps with responsive UI and advanced customisation.
-- Built and configured PCF control, C# plugins, and client-side JavaScript.
-- Set up governance measures including DLP, environment variables, and Solution Checker.
-- Built error logging with handling and diagnostics for critical flows. 
-- Deployed solutions across DEV and TEST environments using Power Platform Pipelines.
-- Created and documented automated workflows, security models, and integration points.
-- Produced solution diagrams and technical documentation for maintainability.
+## My Role & Contribution
+
+### Architecture & Design
+- Designed the overall solution architecture across Model-Driven App, Canvas App, and Power Pages.
+- Defined the Dataverse schema, relationships, and supporting enterprise entities (Audit, Integration Log, ETL Staging).
+- Produced system diagrams (C4 model, DFDs, ERDs) for maintainability and onboarding.
+- Designed the full enterprise integration landscape including asynchronous pipelines, ETL migration, observability, error logging, and routing rules.
+
+---
+
+### Development & Customisation
+- Implemented Model-Driven, Canvas, and Power Pages apps with responsive UI and advanced customisation.
+- Built PCF control, C# plugins, client-side JavaScript, and Business Process Flows.
+- Configured SharePoint integration and document automation pipelines.
+- Created automated workflows, environment variables, and connection references.
+- Implemented custom security roles, hierarchy security, table permissions, and Power Pages web roles.
+- Created dashboards, charts, SLA visualisation, and Power BI integration.
+
+---
+
+### Enterprise Engineering & DevOps
+- Implemented governance measures such as DLP policies, Solution Checker, and environment configuration standards.
+- Built structured error logging, integration diagnostics, and reliability monitoring.
+- Developed Power Automate flows with try–catch patterns and integration with Integration Log + audit tables.
+- Set up CI/CD pipelines using Power Platform Pipelines and Azure DevOps for deployment across DEV and TEST.
+- Designed, built, and executed ETL migration pipelines, staging validation, and run summaries.
+- Wrote xUnit + FakeXrmEasy unit tests to validate plugin logic and core business rules.
+- Delivered enterprise-level operational readiness across ALM, data migration, integration reliability, observability, routing rules, and automated testing.
+
+This FOI Management Suite delivers full end-to-end capability across intake, case management, document handling, integrations, compliance, auditing, DevOps, and operational support. It reflects real public-sector requirements while remaining modular, maintainable, and scalable for long-term use. All components are designed for low-risk deployment, operational stability, and supportability by government teams.

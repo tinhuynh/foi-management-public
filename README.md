@@ -283,13 +283,13 @@ Enterprise-specific diagrams are located in `/docs/diagrams/enterprise/`.
 ### **C. Data Models (ERDs)**
 
 - **Core FOI Management Suite ERD**  
-  [erd-foi-management-suite.png](./docs/diagrams/erd-foi-management-suite.png)
+  [erd-foi-management-suite.png](./docs/diagrams/erd-foi-management-suite-public.png)
 
 - **Data Migration & Import ERD**  
-  [erd-foi-data-migration-import-staging.png](./docs/diagrams/enterprise/erd-foi-data-migration-import-staging.png)
+  [erd-foi-data-migration-import-staging.png](./docs/diagrams/enterprise/erd-foi-data-migration-import-staging-public.png)
 
 - **Audit & Integration Observability ERD**  
-  [erd-audit-integration-observability-erd.png](./docs/diagrams/enterprise/erd-audit-integration-observability-erd.png)
+  [erd-audit-integration-observability-erd.png](./docs/diagrams/enterprise/erd-audit-integration-observability-erd-public.png)
 
 ---
 

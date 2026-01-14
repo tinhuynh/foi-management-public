@@ -6,17 +6,7 @@ This project implements a controlled ALM process using Azure DevOps for exportin
 
 ## Architecture Overview
 
-```mermaid
-flowchart LR
-    DEV[DEV (Unmanaged)]
-    ADO[Ado Build Pipeline]
-    RELEASE[ADO Release Pipeline]
-    TEST[Test (Managed)]
-
-    DEV -->|Export Managed Solution| ADO
-    ADO -->|Publish Artifacts| RELEASE
-    RELEASE -->|Import Managed Solution| TEST
-```
+![Functional CI/CD Pipeline in Azure DevOps](../../docs/diagrams/enterprise/alm-devops.png)
 
 ---
 

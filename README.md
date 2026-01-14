@@ -289,7 +289,7 @@ Enterprise-specific diagrams are located in `/docs/diagrams/enterprise/`.
   [erd-foi-data-migration-import-staging.png](./docs/diagrams/enterprise/erd-foi-data-migration-import-staging-public.png)
 
 - **Audit & Integration Observability ERD**  
-  [erd-audit-integration-observability-erd.png](./docs/diagrams/enterprise/erd-audit-integration-observability-erd-public.png)
+  [erd-audit-integration-observability.png](./docs/diagrams/enterprise/erd-audit-integration-observability-erd-public.png)
 
 ---
 

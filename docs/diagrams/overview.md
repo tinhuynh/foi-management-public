@@ -1,6 +1,7 @@
 # FOI Management Suite – Architecture Overview
 This page provides a consolidated view of all key architecture diagrams for the FOI Management Suite, including system context, data modelling, dataflows, integrations, ETL staging, observability, and DevOps pipelines.  
-Each diagram is clickable to view full resolution.
+
+**Each diagram is clickable to view full resolution.**
 
 ---
 
@@ -81,5 +82,5 @@ DevOps/ALM pipeline showing how the unmanaged solution from the DEV environment 
 ---
 
 ## 🔗 Full Diagram Directory
-For all original PNG files and updates, see:  
+For all original PNG files and updates, please see:  
 `/docs/diagrams/`

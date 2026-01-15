@@ -103,7 +103,7 @@ For a visual representation to some of the flows, see the Data Flow Diagrams (DF
 - **SharePoint Online** - Document storage and metadata
 - **Power BI Desktop & Service** - Reporting and dashboards
 - **PCF, C#, JavaScript, FetchXML, Liquid** - Customisation & development
-- **Azure Services** - Azure Function, Logic Apps, Service Bus
+- **Azure Services** - Webhook endpoint, Azure Function, Logic Apps, Service Bus
 - **Data Integration** - Power Query / Dataflows
 - **Testing** - xUnit, FakeXrmEasy
 
@@ -200,6 +200,10 @@ End-to-end asynchronous integration chain:
 **Webhook → Azure Function → Service Bus → Logic App consumer**.  
 Includes correlation IDs, structured validation outcomes, and clear technical  
 error surfaces for reliable multi-system orchestration.
+
+The solution also implements a dedicated **Email Intake Ingestion workflow** using Azure Logic Apps. This workflow monitors a secure FOI mailbox, extracts attachments and message metadata, performs structured parsing and validation, and submits the payload into the FOI staging pipeline. It automatically tags the source, captures sender details, and hands off to Dataverse for downstream business processing and audit logging. 
+
+This ensures that both internal platform-initiated events (via Webhook triggered on FOI Request creation) and operational email-based submissions are handled consistently, reliably, and with full observability.
 
 ---
 

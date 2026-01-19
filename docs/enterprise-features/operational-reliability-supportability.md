@@ -80,7 +80,7 @@ Failures are stored as data, not hidden inside run histories.
 
 ### **3. Finally Phase**
 Used only in flows that must return a response regardless of outcome. 
-In this solution, the Finally block returns a success/error payload back to the Canvas App caller.
+In this solution, the Finally block returns a success/error payload, or the newly created SharePoint folder path back to the Canvas App caller.
 
 ---
 

@@ -70,7 +70,7 @@ Flow diagram showing how FOI Requests are created and managed through Power Page
 ## DFD – Canvas Document Upload & Delete Flow
 ![DFD – Canvas Document Flow](dfd-foi-canvas-upload-delete.png)
 
-The Canvas App triggers multiple Power Automate flows to handle document operations. Two flows write diagnostic details to the Integration Log, and one writes to the Error Log for exceptions. The diagram shows the high-level pattern only; individual flow variations are intentionally omitted for clarity.
+The Canvas App triggers multiple Power Automate flows to handle document operations. Flows write diagnostic details to the Integration Log for exceptions.
 
 ---
 

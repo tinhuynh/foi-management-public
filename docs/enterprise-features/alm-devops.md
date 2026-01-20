@@ -98,6 +98,21 @@ This enables environment-specific configuration without modifying the solution.
 
 ---
 
+## Change-Controlled Components
+
+Certain components are intentionally excluded from routine solution deployments.
+
+These components are operationally sensitive and are updated only when a change is required:
+
+- Webhook registrations (bound to environment-specific Azure Function endpoints)
+- Email intake Logic Apps (mailbox- and tenant-bound)
+- Service Bus publishers and downstream Logic Apps (disabled in Test to isolate external dependencies)
+- Routing Rule Sets (active rules are not overwritten to avoid deployment failures or unintended production impact)
+
+This mirrors enterprise deployment practices where infrastructure-bound and operational components are managed separately from application solution releases.
+
+---
+
 ## Screenshots
 
 ![Build Success](../../assets/screenshots/35-build-success.png)

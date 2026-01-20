@@ -3,11 +3,12 @@
 ## **FOI Management Suite**
 *A Freedom of Information (FOI) request handling solution featuring Model-Driven and Canvas Apps, plus a Self-Service Power Pages portal.*
 
-## **Overview**
-The FOI Management Suite is an end-to-end solution built on Microsoft Power Platform and Dynamics 365 Customer Service, designed to streamline Freedom of Information (FOI) request processing for government or public sector organisations.
-It integrates internal case management tools with a secure citizen-facing portal, enabling efficient request intake, document handling, SLA monitoring, and compliance tracking.
+## Overview
+The FOI Management Suite is a self-directed, enterprise-style portfolio system built on Microsoft Power Platform and Dynamics 365 Customer Service. It demonstrates how Freedom of Information (FOI) request processing can be modelled using Dataverse, model-driven applications, automation, and secure citizen-facing portals following public-sector delivery patterns.
 
-**Impact:** Reduced FOI request processing time by an estimated 40% through automated workflows, integrated self-service submission, and centralised case management.
+The system integrates internal case management tools with a secure citizen-facing portal to demonstrate request intake, document handling, SLA monitoring, and compliance-oriented tracking.
+
+**Design Outcomes:** Demonstrates how automated workflows, integrated self-service submission, and centralised case management can reduce manual handling effort and improve traceability in FOI workflows.
 
 ---
 

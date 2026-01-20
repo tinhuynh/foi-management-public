@@ -49,7 +49,7 @@ Integration flow showing how an FOI Request creation triggers an async Dataverse
 ## Logic Apps Integration – Email Intake Processing
 ![Logic Apps Email Ingestion](enterprise/email-ingestion-logic-apps-integration-flow.png)
 
-Email ingestion flow showing how the FOI mailbox triggers an Azure Logic App that creates FOI Request Import records and associated Request Attachments in Dataverse. Files are stored in SharePoint, and any processing failures are logged to the Integration Log for diagnostics.
+Email ingestion flow showing how the FOI mailbox triggers an Azure Logic App that creates FOI Request Import records and associated Request Attachments in Dataverse. Files are stored in SharePoint, and execution outcomes are logged to the Integration Log table for auditability, diagnostics and traceability.
 
 ---
 

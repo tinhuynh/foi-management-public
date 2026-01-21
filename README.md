@@ -29,7 +29,7 @@ The system integrates internal case management tools with a secure citizen-facin
    - Built on a custom Dataverse FOI Request table, with selective use of D365 Case entity features (queues, routing rules, escalation patterns) to align with Customer Service operational workflows.
    - Business Process Flow to guide FOI officers through request lifecycle.
    - SLA Alerts & out-of-the-box (OOB) SLA Timer control for compliance monitoring.
-   - Custom PCF SLA Progress Bar for enhanced SLA visualisation.
+   - Custom PCF SLA Progress Bar that fills based on elapsed time between start and due dates, with automatic colour changes to indicate warning and overdue states.
    - Client-side JavaScript to enforce uppercase Department codes and warn if not exactly three characters.
    - C# Plugin for automated case number generation and server-side logic.
    - Utilises Dataverse FOI Escalation BPF views and charts, which are surfaced in the FOI Power BI dashboard.

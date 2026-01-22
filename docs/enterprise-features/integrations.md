@@ -46,7 +46,7 @@ The same integration principles are reused across multiple FOI use cases, includ
 
 - **Document handling and storage**
   - Canvas app uploads directly to SharePoint
-  - Automated copying of documents from the Model-Driven app to SharePoint via Power Automate flow
+  - Scalable Document Storage: Response documents are offloaded from Dataverse to SharePoint via Power Automate, keeping Dataverse lightweight while maintaining metadata for traceability
 
 These scenarios differ in business purpose but share the same integration design approach.
 

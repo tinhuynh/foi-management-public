@@ -33,6 +33,7 @@ The system integrates internal case management tools with a secure citizen-facin
    - Client-side JavaScript to enforce uppercase Department codes and warn if not exactly three characters.
    - C# Plugin for automated case number generation and server-side logic.
    - Utilises Dataverse FOI Escalation BPF views and charts, which are surfaced in the FOI Power BI dashboard.
+   - Document Offloading to SharePoint: Response files are automatically moved from Dataverse to SharePoint via Power Automate, with Dataverse retaining metadata only for traceability.
 
 2. **FOI Search & Upload – Canvas App**
    - Responsive layout supporting mobile and desktop devices.

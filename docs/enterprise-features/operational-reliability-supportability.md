@@ -45,6 +45,7 @@ This pattern includes:
   - **Technical error detail**  
   - **Business-readable summary**
 - No dependency on run history or email notifications  
+- **Selective email alerting** for critical integration failures
 - **Support-friendly visibility** directly inside Dataverse  
 
 This creates predictable, diagnosable, and supportable behaviour across the entire FOI ecosystem.
@@ -82,6 +83,13 @@ Failures are stored as data, not hidden inside run histories.
 Used only in flows that must return a response regardless of outcome. 
 In this solution, the Finally block returns a success/error payload, or the newly created SharePoint folder path back to the Canvas App caller.
 
+### **4. Email Alerting**
+In addition to centralised logging, selective email alerting is implemented for high-impact integration failures where immediate awareness is required (e.g. SharePoint integration failures).
+Alerts are triggered only for actionable failure scenarios, and include:
+- Integration name
+- Correlation ID
+- High-level failure summary
+Email notifications are used as a signal, while the Integration Log remains the source of truth for investigation and resolution.
 ---
 
 ## Why This Matters
@@ -122,6 +130,30 @@ Follows established enterprise integration patterns.
 5. Only genuine errors are escalated to developers, reducing noise and improving response times.
 
 This workflow ensures predictable, support-friendly production behaviour.
+
+---
+
+## Support Model (Post Go-Live)
+
+### BAU Support
+- User access and security role issues  
+- Data correction and controlled reprocessing  
+- Handling of known validation and business rule errors  
+
+### Platform Support
+- Power Automate flow failures and controlled retries  
+- Connector authentication and connection reference issues  
+- Minor application and configuration changes within approved boundaries  
+
+### Engineering Support
+- Dataverse schema changes  
+- New or modified system integrations  
+- Plugin, custom code, and solution updates via ALM  
+
+### Out of Scope
+- Direct production data edits  
+- Emergency hotfixes outside approved ALM processes  
+- Use of unsupported or non-approved connectors
 
 ---
 

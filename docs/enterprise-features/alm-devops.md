@@ -43,6 +43,19 @@ The CD pipeline:
 
 ---
 
+## Rollback Strategy
+
+Rollback is handled through controlled redeployment of the **last known good managed solution** via Azure DevOps.
+
+In the event of a failed or regressive release:
+- The previous managed solution artifact is redeployed using the same CI/CD pipeline
+- Environment variables and connection references are reapplied from versioned deployment settings
+- No direct production edits or hotfixes are performed outside ALM
+
+This ensures predictable recovery, auditability, and alignment with enterprise change control practices.
+
+---
+
 ## Environment Strategy
 
 | Environment | Purpose | Customisations |

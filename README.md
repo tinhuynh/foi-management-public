@@ -170,7 +170,7 @@ This solution implements **seven enterprise-grade capabilities**, each designed 
 
 Automated export, build, and deployment of managed solutions  
 across **DEV → TEST** using Azure DevOps pipelines, connection references,  
-environment variables, and version-controlled solution artefacts.
+environment variables, and version-controlled solution artefacts, with rollback achieved via redeployment of the last known good release.
 
 ---
 
@@ -224,7 +224,7 @@ operations and reduces manual triage workload.
 **Purpose:** Provide centralised traceability across all automation, integration, and processing steps.
 
 Centralised Integration Log capturing operation name, source system, correlation ID,  
-timing, success/failure state, and detailed technical output. Enables support  
+timing, success/failure state, and detailed technical output. Email alerting for fast triage. Enables support  
 teams to diagnose issues quickly across ingestion, validation, and promotion flows.
 
 ---

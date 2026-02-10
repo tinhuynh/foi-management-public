@@ -94,7 +94,7 @@ For a visual representation to some of the flows, see the Data Flow Diagrams (DF
 - **Responsive Canvas App** design for mobile and desktop.
 - **Liquid templates** for customised portal experiences.
 - **Power BI**: Built with Power BI Desktop, including integration with Dataverse BPF views, charts, and dashboards.
-- Additional enterprise-grade capabilities (DevOps automation, integration architecture, custom auditing, observability, queue routing) are detailed in the **Enterprise Features - High-Level Summary** section.
+- Additional enterprise capabilities (DevOps automation, integration architecture, custom auditing, observability, queue routing) are detailed in the **Enterprise Features - High-Level Summary** section.
 
 ---
 
@@ -113,7 +113,7 @@ For a visual representation to some of the flows, see the Data Flow Diagrams (DF
 
 ## **Developer Tooling**
 - **LevelUp** – Dataverse metadata inspection, form diagnostics, and record navigation.
-- **XrmToolBox: Plugin Trace Viewer** – Advanced plug-in execution diagnostics and trace log inspection.
+- **XrmToolBox: Plugin Trace Viewer** – Plug-in execution diagnostics and trace log inspection.
 - **XrmToolBox: Data Transporter** – Reference data migration between environments.
 
 ---
@@ -124,7 +124,7 @@ This section outlines the governance, security, and operational standards applie
 
 ### Security Model
 - Custom security roles for FOI Admin, Team Leader, Officer, and Auditor
-- Hierarchy security using the Position model
+- Hierarchy security using the Position model for automatic record sharing and visibility for Team Leads
 - Dataverse table permissions for restricting record access
 - Power Pages web roles for authenticated external access
 
@@ -160,7 +160,7 @@ This section outlines the governance, security, and operational standards applie
 
 ### A. High-Level Summary
 
-This solution implements **seven enterprise-grade capabilities**, each designed to reflect real-world government and large-organisation requirements. These features demonstrate production-aligned design, robust integration patterns, and operational maturity beyond typical junior implementations.
+This solution implements **seven enterprise capabilities** designed to reflect real-world government and large-organisation requirements.
 
 ---
 
@@ -169,14 +169,14 @@ This solution implements **seven enterprise-grade capabilities**, each designed 
 **Purpose:** Ensure consistent, automated, repeatable deployments across environments.
 
 Automated export, build, and deployment of managed solutions  
-across **DEV → TEST** using Azure DevOps pipelines, connection references,  
+across **DEV → TEST** enviroments using Azure DevOps pipelines, connection references,  
 environment variables, and version-controlled solution artefacts, with rollback achieved via redeployment of the last known good release.
 
 ---
 
 ### **2. ETL & Data Migration Pipeline**
 
-**Purpose:** Validate large CSV intake and safely promote FOI Requests into Dataverse.
+**Purpose:** Validate CSV intake and safely promote FOI Requests into Dataverse.
 
 Dataflow-based staging model with validation, import status tracking,  
 run summaries, and batch promotion into FOI Requests. Supports substantial  
@@ -189,8 +189,8 @@ CSV loads, controlled retries, failure isolation, and detailed migration logs.
 **Purpose:** Provide transparent, auditable tracking of FOI Request changes.
 
 Custom FOI Request Audit table capturing field-level changes with old/new values,  
-user attribution, and timestamps. Supports compliance scenarios and extends  
-beyond native Dataverse auditing to meet government accountability requirements.
+user identity, and timestamps. Supports compliance scenarios and extends  
+beyond native Dataverse auditing to meet accountability requirements.
 
 ---
 
@@ -203,18 +203,18 @@ End-to-end asynchronous integration chain:
 Includes correlation IDs, structured validation outcomes, and clear technical  
 error surfaces for reliable multi-system orchestration.
 
-The solution also implements a dedicated **Email Intake Ingestion workflow** using Azure Logic Apps. This workflow monitors a secure FOI mailbox, extracts attachments and message metadata, performs structured parsing and validation, and submits the payload into the FOI staging pipeline. It automatically tags the source, captures sender details, and hands off to Dataverse for downstream business processing and audit logging. 
+The solution also implements a dedicated **Email Intake Ingestion workflow** using Azure Logic Apps. This workflow monitors a secure mailbox, extracts attachments and message metadata, performs structured parsing and validation, and adds new entries to the FOI staging pipeline. It automatically tags the source, captures sender details, and populates to Dataverse for downstream business processing and audit logging. 
 
-This ensures that both internal platform-initiated events (via Webhook triggered on FOI Request creation) and operational email-based submissions are handled consistently, reliably, and with full observability.
+This ensures that both internal platform-initiated events (via Webhook triggered on FOI Request creation) and external email-based submissions are handled consistently, reliably, and with full observability.
 
 ---
 
 ### **5. Operational Automation (D365 Queues & Routing)**
 
-**Purpose:** Automate work distribution and case prioritisation aligned with real-world operations.
+**Purpose:** Automate work distribution and case prioritisation.
 
 Queue- and rule-based case assignment with priority tiers, default fallbacks,  
-“Worked By” behaviour, and supervisor visibility. Mirrors government intake  
+“Worked By” behaviour, and supervisor visibility. Simulates public-sector intake  
 operations and reduces manual triage workload.
 
 ---
@@ -224,7 +224,7 @@ operations and reduces manual triage workload.
 **Purpose:** Provide centralised traceability across all automation, integration, and processing steps.
 
 Centralised Integration Log capturing operation name, source system, correlation ID,  
-timing, success/failure state, and detailed technical output. Email alerting for fast triage. Enables support  
+timing, success/failure state, and detailed technical error. Also includes selective Email alerting for fast triage. Enables support  
 teams to diagnose issues quickly across ingestion, validation, and promotion flows.
 
 ---
@@ -233,9 +233,9 @@ teams to diagnose issues quickly across ingestion, validation, and promotion flo
 
 **Purpose:** Ensure reliability of server-side logic and business rules through automated validation.
 
-Plugin logic unit-tested using **FakeXrmEasy + xUnit** with scenario-based test coverage.  
+Plugin logic unit-tested using **FakeXrmEasy & xUnit** with scenario-based test coverage.  
 Demonstrates ability to mock Dataverse context, validate business rules, and build  
-repeatable automated tests aligned with enterprise engineering expectations.
+repeatable automated tests.
 
 ---
 
@@ -383,4 +383,4 @@ Enterprise-specific diagrams are located in `/docs/diagrams/enterprise/`.
 - Wrote xUnit + FakeXrmEasy unit tests to validate plugin logic and core business rules.
 - Delivered enterprise-level operational readiness across ALM, data migration, integration reliability, observability, routing rules, and automated testing.
 
-This FOI Management Suite delivers full end-to-end capability across intake, case management, document handling, integrations, compliance, auditing, DevOps, and operational support. It reflects real public-sector requirements while remaining modular, maintainable, and scalable for long-term use. All components are designed for low-risk deployment, operational stability, and supportability by government teams.
+This FOI Management Suite delivers full end-to-end capability across intake, case management, document handling, integrations, compliance, auditing, DevOps, and operational support. It simulates public-sector requirements with security, governance, BAU stability and supportability taken into account during design and build phases.
